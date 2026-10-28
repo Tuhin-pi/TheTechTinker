@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f5ef">
+    <meta name="description" content="Electronics kits, maker components, and practical parts for your next build.">
+    <title>TheTechTinker Supply | Parts for your next idea</title>
+    <link rel="icon" type="image/svg+xml" href="assets/thetechtinker-mark.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="products.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#catalog">Skip to products</a>
+    <div class="announcement">
+      <span class="announcement-mark" aria-hidden="true"></span>
+      <p id="announcement-copy">Good parts for curious people</p>
+      <a href="#about">A little about us <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="TheTechTinker Supply home">
+        <img class="brand-mark" src="assets/thetechtinker-mark.svg" alt="">
+        <span class="brand-name"><span>TheTechTinker</span><strong>Supply</strong></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#catalog">Shop</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#help">Help &amp; delivery</a>
+      </nav>
+      <button class="cart-trigger" id="open-cart" type="button" aria-haspopup="dialog">
+        <span>Cart</span>
+        <span class="cart-count" id="cart-count" aria-label="0 items in cart">0</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> COMPONENTS FOR YOUR NEXT BUILD</p>
+          <h1 id="intro-title">Small parts.<br><span>Big ideas.</span></h1>
+          <p class="intro-description">Boards, sensors, and the useful little things that turn a sketch into something real.</p>
+          <a class="intro-link" href="#catalog">Browse the collection <span aria-hidden="true">&darr;</span></a>
+        </div>
+        <div class="intro-image-wrap">
+          <img class="intro-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="Close-up of a detailed electronics circuit board" fetchpriority="high">
+          <span class="image-note"><span class="note-dot"></span> READY WHEN YOU ARE</span>
+        </div>
+        <div class="intro-stamp" aria-hidden="true">MAKE<br>IT WORK<span>+</span></div>
+      </section>
+
+      <section class="shop-section" id="catalog" aria-labelledby="catalog-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE PARTS SHELF</p>
+            <h2 id="catalog-title">Find your next <span>starting point.</span></h2>
+          </div>
+          <p class="catalog-count" id="catalog-count" aria-live="polite"></p>
+        </div>
+
+        <div class="catalog-toolbar">
+          <div class="category-list" id="category-list" aria-label="Filter by category">
+            <button class="category-button selected" type="button" data-category="all" aria-pressed="true">All parts</button>
+          </div>
+          <label class="search-box">
+            <span class="sr-only">Search products</span>
+            <span class="search-symbol" aria-hidden="true"></span>
+            <input id="product-search" type="search" placeholder="Search the shelf" autocomplete="off">
+            <kbd>/</kbd>
+          </label>
+        </div>
+
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+        <p class="empty-results" id="empty-results" hidden>No parts match that search. Try another name or category.</p>
+      </section>
+
+      <section class="about-band" id="about" aria-labelledby="about-title">
+        <div class="about-marker" aria-hidden="true"><img src="assets/thetechtinker-mark.svg" alt=""></div>
+        <div class="about-copy">
+          <p class="eyebrow">A NOTE FROM THE BENCH</p>
+          <h2 id="about-title">For the curious,<br>the careful, and the <span>“what if?”</span></h2>
+        </div>
+        <p class="about-description">TheTechTinker Supply is a small electronics project shop. We bring together approachable parts for experiments, prototypes, and the builds you have been meaning to start. Replace this note with your story before launch.</p>
+      </section>
+
+      <section class="help-section" id="help" aria-labelledby="help-title">
+        <div>
+          <p class="eyebrow">BEFORE YOU ORDER</p>
+          <h2 id="help-title">Need a hand?</h2>
+        </div>
+        <div class="help-detail">
+          <p>Orders are confirmed with us on WhatsApp. We will confirm availability, delivery, and payment details with you there.</p>
+          <p class="help-small">Your order is not placed until you send the WhatsApp message. Adding an item to your cart does not reserve stock.</p>
+        </div>
+        <a class="help-link" href="#catalog">Back to the parts <span aria-hidden="true">&uarr;</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#top" aria-label="TheTechTinker Supply home">
+        <img class="brand-mark" src="assets/thetechtinker-mark.svg" alt="">
+        <span class="brand-name"><span>TheTechTinker</span><strong>Supply</strong></span>
+      </a>
+      <p>Built for the next thing you make.</p>
+      <span class="footer-year">&copy; <span id="current-year"></span> TheTechTinker Supply</span>
+    </footer>
+
+    <dialog class="cart-dialog" id="cart-dialog" aria-labelledby="cart-title">
+      <div class="cart-panel">
+        <div class="cart-header">
+          <div>
+            <p class="eyebrow">YOUR BUILD LIST</p>
+            <h2 id="cart-title">Your cart <span id="dialog-count">(0)</span></h2>
+          </div>
+          <button class="icon-button" id="close-cart" type="button" aria-label="Close cart">Close</button>
+        </div>
+        <div class="cart-content">
+          <div class="cart-items" id="cart-items"></div>
+          <p class="cart-empty" id="cart-empty">Your cart is waiting for a first part.</p>
+          <div class="cart-summary" id="cart-summary" hidden>
+            <div class="cart-summary-copy">
+              <span>Estimated subtotal</span>
+              <span class="cart-savings" id="cart-savings" hidden></span>
+            </div>
+            <strong id="cart-subtotal"></strong>
+          </div>
+
+          <form class="order-form" id="order-form" hidden>
+            <div class="form-heading">
+              <p class="eyebrow">NEXT, THE DETAILS</p>
+              <p>We will pass these along with your cart in WhatsApp.</p>
+            </div>
+            <label class="form-field">Your name
+              <input name="customerName" autocomplete="name" required maxlength="80" placeholder="Name">
+            </label>
+            <label class="form-field">Phone number
+              <input name="customerPhone" type="tel" autocomplete="tel" required maxlength="25" placeholder="Your contact number">
+            </label>
+            <label class="form-field">Delivery address
+              <textarea name="customerAddress" autocomplete="street-address" required maxlength="300" rows="3" placeholder="Street, city, PIN code"></textarea>
+            </label>
+            <p class="order-notice">Availability, delivery charges, and payment are confirmed with you on WhatsApp. No payment is taken here.</p>
+            <button class="whatsapp-button" type="submit">Continue to WhatsApp <span aria-hidden="true">&rarr;</span></button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
