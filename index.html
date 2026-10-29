@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="products.js" defer></script>
+    <script src="cart-store.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -19,7 +20,7 @@
     <div class="announcement">
       <span class="announcement-mark" aria-hidden="true"></span>
       <p id="announcement-copy">Good parts for curious people</p>
-      <a href="#about">A little about us <span aria-hidden="true">&rarr;</span></a>
+      <a href="about.html">A little about us <span aria-hidden="true">&rarr;</span></a>
     </div>
 
     <header class="site-header">
@@ -29,8 +30,9 @@
       </a>
       <nav class="main-nav" aria-label="Main navigation">
         <a class="nav-link active" href="#catalog">Shop</a>
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#help">Help &amp; delivery</a>
+        <a class="nav-link" href="learn.html">Learn</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="help.html">Help &amp; delivery</a>
       </nav>
       <button class="cart-trigger" id="open-cart" type="button" aria-haspopup="dialog">
         <span>Cart</span>
@@ -78,26 +80,6 @@
         <p class="empty-results" id="empty-results" hidden>No parts match that search. Try another name or category.</p>
       </section>
 
-      <section class="about-band" id="about" aria-labelledby="about-title">
-        <div class="about-marker" aria-hidden="true"><img src="assets/thetechtinker-mark.svg" alt=""></div>
-        <div class="about-copy">
-          <p class="eyebrow">A NOTE FROM THE BENCH</p>
-          <h2 id="about-title">For the curious,<br>the careful, and the <span>“what if?”</span></h2>
-        </div>
-        <p class="about-description">TheTechTinker Supply is a small electronics project shop. We bring together approachable parts for experiments, prototypes, and the builds you have been meaning to start. Replace this note with your story before launch.</p>
-      </section>
-
-      <section class="help-section" id="help" aria-labelledby="help-title">
-        <div>
-          <p class="eyebrow">BEFORE YOU ORDER</p>
-          <h2 id="help-title">Need a hand?</h2>
-        </div>
-        <div class="help-detail">
-          <p>Orders are confirmed with us on WhatsApp. We will confirm availability, delivery, and payment details with you there.</p>
-          <p class="help-small">Your order is not placed until you send the WhatsApp message. Adding an item to your cart does not reserve stock.</p>
-        </div>
-        <a class="help-link" href="#catalog">Back to the parts <span aria-hidden="true">&uarr;</span></a>
-      </section>
     </main>
 
     <footer class="site-footer">

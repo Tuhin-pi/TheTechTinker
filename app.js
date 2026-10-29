@@ -3,7 +3,6 @@
 
   const config = window.STORE_CONFIG;
   const products = window.PRODUCTS;
-  const storageKey = "circuit-dept-cart-v1";
   const money = new Intl.NumberFormat(config.locale, {
     style: "currency",
     currency: config.currency,
@@ -30,38 +29,12 @@
   };
 
   let activeCategory = "all";
-  let cart = readCart();
+  let cart = window.CircuitCart.read(products);
   let toastTimer;
 
-  function readCart() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
-      if (!Array.isArray(saved)) return [];
-      return saved.filter(function (item) {
-        return products.some(function (product) {
-          return product.id === item.productId && product.variants[item.variantIndex];
-        });
-      }).map(function (item) {
-        const product = products.find(function (entry) { return entry.id === item.productId; });
-        const variant = product.variants[item.variantIndex];
-        return {
-          productId: product.id,
-          variantIndex: item.variantIndex,
-          quantity: Math.min(Math.max(1, Number(item.quantity) || 1), variant.stock)
-        };
-      }).filter(function (item) {
-        return item.quantity > 0;
-      });
-    } catch (error) {
-      return [];
-    }
-  }
-
   function saveCart() {
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(cart));
-    } catch (error) {
-      showToast("Cart could not be saved in this browser.");
+    if (!window.CircuitCart.write(cart)) {
+      showToast("Cart could not be saved. Enable cookies for this site.");
     }
   }
 
@@ -119,14 +92,19 @@
     card.className = "product-card";
     card.dataset.productId = product.id;
 
+    const galleryImages = Array.isArray(product.images) && product.images.length
+      ? product.images.map(function (image) {
+        return typeof image === "string" ? { src: image, alt: product.imageAlt } : image;
+      })
+      : [{ src: product.image, alt: product.imageAlt }];
     const imageWrap = document.createElement("div");
     imageWrap.className = "product-image-wrap";
     const productSoldOut = product.variants.every(function (variant) { return variant.stock < 1; });
     if (productSoldOut) imageWrap.classList.add("sold-out-product");
     const image = document.createElement("img");
     image.className = "product-image";
-    image.src = product.image;
-    image.alt = product.imageAlt;
+    image.src = galleryImages[0].src;
+    image.alt = galleryImages[0].alt || product.name;
     image.loading = "lazy";
     image.width = 900;
     image.height = 675;
@@ -134,13 +112,41 @@
       imageWrap.classList.add("image-failed");
       image.removeAttribute("src");
       image.alt = "Product photo unavailable";
-    }, { once: true });
+    });
 
     const badge = document.createElement("span");
     badge.className = "product-badge";
     badge.textContent = productSoldOut ? "SOLD OUT" : product.badge;
     if (productSoldOut) badge.classList.add("sold-out-badge");
     imageWrap.append(image, badge);
+    if (galleryImages.length > 1) {
+      let activeImageIndex = 0;
+      const previousImage = document.createElement("button");
+      previousImage.className = "gallery-button gallery-button-previous";
+      previousImage.type = "button";
+      previousImage.setAttribute("aria-label", "Previous image for " + product.name);
+      previousImage.textContent = "<";
+      const imageCount = document.createElement("span");
+      imageCount.className = "gallery-count";
+      imageCount.setAttribute("aria-live", "polite");
+      const nextImage = document.createElement("button");
+      nextImage.className = "gallery-button gallery-button-next";
+      nextImage.type = "button";
+      nextImage.setAttribute("aria-label", "Next image for " + product.name);
+      nextImage.textContent = ">";
+      function showGalleryImage(index) {
+        activeImageIndex = (index + galleryImages.length) % galleryImages.length;
+        const activeImage = galleryImages[activeImageIndex];
+        imageWrap.classList.remove("image-failed");
+        image.src = activeImage.src;
+        image.alt = activeImage.alt || product.name + " image " + (activeImageIndex + 1);
+        imageCount.textContent = (activeImageIndex + 1) + " / " + galleryImages.length;
+      }
+      previousImage.addEventListener("click", function () { showGalleryImage(activeImageIndex - 1); });
+      nextImage.addEventListener("click", function () { showGalleryImage(activeImageIndex + 1); });
+      showGalleryImage(0);
+      imageWrap.append(previousImage, imageCount, nextImage);
+    }
 
     const details = document.createElement("div");
     details.className = "product-details";
@@ -237,19 +243,14 @@
   }
 
   function addToCart(product, variantIndex) {
-    const variant = getVariant(product, variantIndex);
-    const item = cart.find(function (entry) {
-      return entry.productId === product.id && entry.variantIndex === variantIndex;
-    });
-    if (variant.stock < 1 || (item && item.quantity >= variant.stock)) {
+    const result = window.CircuitCart.add(products, cart, product.id, variantIndex);
+    if (result.status === "unavailable") {
       showToast("That option is at its available quantity.");
       return;
     }
-    if (item) item.quantity += 1;
-    else cart.push({ productId: product.id, variantIndex: variantIndex, quantity: 1 });
-    saveCart();
+    cart = result.items;
     renderCart();
-    showToast(product.name + " added to cart");
+    showToast(result.status === "added" ? product.name + " added to cart" : "Cart could not be saved. Enable cookies for this site.");
   }
 
   function cartLines() {

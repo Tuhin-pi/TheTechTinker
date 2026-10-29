@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f5ef">
+    <meta name="description" content="Watch a project lesson and find the products used in the build.">
+    <title>Project lesson | TheTechTinker Supply</title>
+    <link rel="icon" type="image/svg+xml" href="assets/thetechtinker-mark.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="products.js" defer></script>
+    <script src="videos.js" defer></script>
+    <script src="cart-store.js" defer></script>
+    <script src="video.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#lesson-content">Skip to lesson</a>
+    <div class="announcement">
+      <span class="announcement-mark" aria-hidden="true"></span>
+      <p>Good parts for curious people</p>
+      <a href="about.html">A little about us <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="TheTechTinker Supply home">
+        <img class="brand-mark" src="assets/thetechtinker-mark.svg" alt="">
+        <span class="brand-name"><span>TheTechTinker</span><strong>Supply</strong></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html#catalog">Shop</a>
+        <a class="nav-link active" href="learn.html" aria-current="page">Learn</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="help.html">Help &amp; delivery</a>
+      </nav>
+      <a class="cart-trigger" href="index.html#catalog">Shop parts <span aria-hidden="true">&rarr;</span></a>
+    </header>
+
+    <main id="top">
+      <section class="video-detail-section" id="lesson-content" hidden>
+        <a class="video-back-link" href="learn.html"><span aria-hidden="true">&larr;</span> All lessons</a>
+        <div class="video-detail-heading">
+          <p class="eyebrow">PROJECT LESSON</p>
+          <h1 id="video-title"></h1>
+          <p id="video-description"></p>
+        </div>
+        <div class="video-detail-layout">
+          <div class="video-detail-player">
+            <iframe id="video-player" title="Project lesson video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <aside class="recommendation-panel" aria-labelledby="recommendation-title">
+            <p class="eyebrow">BUILD THE PROJECT</p>
+            <h2 id="recommendation-title">Products in this lesson</h2>
+            <div class="recommendation-list" id="recommendation-list"></div>
+            <p class="recommendation-empty" id="recommendation-empty" hidden>No linked products are available for this lesson.</p>
+          </aside>
+        </div>
+      </section>
+      <section class="video-not-found" id="video-not-found" hidden>
+        <p class="eyebrow">LESSON NOT FOUND</p>
+        <h1>This video is not available.</h1>
+        <a class="intro-link" href="learn.html">Back to all lessons <span aria-hidden="true">&rarr;</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="index.html#top" aria-label="TheTechTinker Supply home">
+        <img class="brand-mark" src="assets/thetechtinker-mark.svg" alt="">
+        <span class="brand-name"><span>TheTechTinker</span><strong>Supply</strong></span>
+      </a>
+      <p>Built for the next thing you make.</p>
+      <span class="footer-year">&copy; TheTechTinker Supply</span>
+    </footer>
+  </body>
+</html>

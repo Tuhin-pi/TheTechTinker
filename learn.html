@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f5ef">
+    <meta name="description" content="Practical electronics lessons for curious minds and hands-on projects.">
+    <title>TheTechTinker Supply | Learn</title>
+    <link rel="icon" type="image/svg+xml" href="assets/thetechtinker-mark.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="videos.js" defer></script>
+    <script src="learn.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#learn">Skip to learning videos</a>
+    <div class="announcement">
+      <span class="announcement-mark" aria-hidden="true"></span>
+      <p>Good parts for curious people</p>
+      <a href="about.html">A little about us <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="index.html#top" aria-label="TheTechTinker Supply home">
+        <img class="brand-mark" src="assets/thetechtinker-mark.svg" alt="">
+        <span class="brand-name"><span>TheTechTinker</span><strong>Supply</strong></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html#catalog">Shop</a>
+        <a class="nav-link active" href="learn.html" aria-current="page">Learn</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="help.html">Help &amp; delivery</a>
+      </nav>
+      <a class="cart-trigger" href="index.html#catalog">Shop parts <span aria-hidden="true">&rarr;</span></a>
+    </header>
+
+    <main id="top">
+      <section class="learning-section" id="learn" aria-labelledby="learn-title">
+        <div class="learning-heading">
+          <div>
+            <p class="eyebrow">THE LEARNING BENCH</p>
+            <h1 id="learn-title">Watch. Learn. <span>Build.</span></h1>
+          </div>
+          <p>Project lessons, useful techniques, and the parts that bring each build to life.</p>
+        </div>
+        <div class="video-library-toolbar">
+          <label class="search-box video-library-search">
+            <span class="sr-only">Search learning videos</span>
+            <span class="search-symbol" aria-hidden="true"></span>
+            <input id="learning-search" type="search" placeholder="Search lessons" autocomplete="off">
+          </label>
+          <p class="video-library-count" id="learning-video-count" aria-live="polite"></p>
+        </div>
+        <div class="learning-video-grid" id="learning-video-grid"></div>
+        <p class="learning-no-results" id="learning-no-results" hidden>No lessons match that search.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="index.html#top" aria-label="TheTechTinker Supply home">
+        <img class="brand-mark" src="assets/thetechtinker-mark.svg" alt="">
+        <span class="brand-name"><span>TheTechTinker</span><strong>Supply</strong></span>
+      </a>
+      <p>Built for the next thing you make.</p>
+      <span class="footer-year">&copy; TheTechTinker Supply</span>
+    </footer>
+  </body>
+</html>
