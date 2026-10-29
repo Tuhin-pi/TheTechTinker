@@ -164,6 +164,33 @@
     description.className = "product-description";
     description.textContent = product.description;
 
+    const specifications = Array.isArray(product.specifications)
+      ? product.specifications.filter(function (specification) { return specification.label && specification.value; })
+      : [];
+    if (specifications.length) {
+      const specificationDetails = document.createElement("details");
+      specificationDetails.className = "product-specifications";
+      const summary = document.createElement("summary");
+      summary.textContent = "Specifications";
+      const table = document.createElement("table");
+      const body = document.createElement("tbody");
+      specifications.forEach(function (specification) {
+        const row = document.createElement("tr");
+        const label = document.createElement("th");
+        label.scope = "row";
+        label.textContent = specification.label;
+        const value = document.createElement("td");
+        value.textContent = specification.value;
+        row.append(label, value);
+        body.append(row);
+      });
+      table.append(body);
+      specificationDetails.append(summary, table);
+      details.append(topLine, title, description, specificationDetails);
+    } else {
+      details.append(topLine, title, description);
+    }
+
     const variantLabel = document.createElement("label");
     variantLabel.className = "variant-control";
     const variantText = document.createElement("span");
@@ -222,7 +249,7 @@
     });
     updateSelection();
     bottom.append(priceStack, stock, add);
-    details.append(topLine, title, description, variantLabel, bottom);
+    details.append(variantLabel, bottom);
     card.append(imageWrap, details);
     return card;
   }
